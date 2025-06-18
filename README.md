@@ -32,6 +32,14 @@ qemu-system-x86_64 \
 
 ## Demo - Serial communication between two VMs over socket
 ```
+qemu-img create -f qcow2 vm1.img 10G
+qemu-img create -f qcow2 vm2.img 10G
 qemu-system-x86_64 -serial unix:/tmp/serial.sock,server,nowait -hda vm1.img
 qemu-system-x86_64 -serial unix:/tmp/serial.sock,client,nowait -hda vm2.img
+
+qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm1.img -m 2048
+qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm2.img -m 2048
+
+qemu-system-x86_64 -boot c -hda vm1.img -m 2048
+qemu-system-x86_64 -boot c -hda vm2.img -m 2048
 ```
