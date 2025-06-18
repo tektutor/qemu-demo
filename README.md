@@ -37,7 +37,7 @@ qemu-img create -f qcow2 vm1.img 10G
 qemu-img create -f qcow2 vm2.img 10G
 
 # Download ubuntu iso
-wget https://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso -O ubuntu.iso
+wget https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso -O ubuntu.iso
 
 # Install ubuntu on vm1
 qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm1.img -m 2048
