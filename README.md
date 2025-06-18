@@ -3,7 +3,7 @@
 ## Demo - Installing QEMU in Ubuntu
 ```
 sudo apt update
-sudo apt install -y qemu qemu-kvm qemu-system qemu-utils gcc make libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+sudo apt install -y qemu-kvm qemu-system qemu-utils gcc make libvirt-daemon-system libvirt-clients bridge-utils virt-manager
 sudo usermod -aG libvirt $(whoami)
 newgrp libvirt
 egrep -c '(vmx|svm)' /proc/cpuinfo
@@ -14,14 +14,15 @@ qemu-system-x86_64 --version
 
 ## Demo - Create a VM using QEMU
 ```
-wget https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso
+wget https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso -O ubuntu.iso
 
-qemu-img create -f qcow2 ubuntu24.img 20G
+
+qemu-img create -f qcow2 ubuntu22.img 20G
 
 qemu-system-x86_64 \
   -boot d \
-  -cdrom ubuntu-24.04-desktop-amd64.iso \
-  -drive file=ubuntu24.img,format=qcow2 \
+  -cdrom ubuntu.iso \
+  -drive file=ubuntu22.img,format=qcow2 \
   -m 4096 \
   -smp 2 \
   -enable-kvm \
