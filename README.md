@@ -45,10 +45,10 @@ qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm1.img -m 2048
 # Install ubuntu on vm2
 qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm2.img -m 2048
 
-# Boot vm1 once installation comples
+# Boot vm1 once installation completes
 qemu-system-x86_64 -boot c -hda vm1.img -m 2048
 
-# Boot vm2 once installation comples
+# Boot vm2 once installation completes
 qemu-system-x86_64 -boot c -hda vm1.img -m 2048
 
 # Enable serial communication in VM1
