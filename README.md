@@ -3,7 +3,7 @@
 ## Demo - Installing QEMU in Ubuntu
 ```
 sudo apt update
-sudo apt install -y qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+sudo apt install -y qemu qemu-kvm qemu-system qemu-utils gcc make libvirt-daemon-system libvirt-clients bridge-utils virt-manager
 sudo usermod -aG libvirt $(whoami)
 newgrp libvirt
 egrep -c '(vmx|svm)' /proc/cpuinfo
@@ -27,4 +27,11 @@ qemu-system-x86_64 \
   -enable-kvm \
   -vga virtio \
   -net nic -net user
+```
+
+
+## Demo - Serial communication between two VMs over socket
+```
+qemu-system-x86_64 -serial unix:/tmp/serial.sock,server,nowait -hda vm1.img
+qemu-system-x86_64 -serial unix:/tmp/serial.sock,client,nowait -hda vm2.img
 ```
