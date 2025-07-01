@@ -40,16 +40,16 @@ qemu-img create -f qcow2 vm2.img 10G
 # Download ubuntu iso
 wget https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso -O ubuntu.iso
 
-# Install ubuntu on vm1
+# Install ubuntu on vm1 in Terminal 1
 qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm1.img -m 2048
 
-# Install ubuntu on vm2
+# Install ubuntu on vm2 in Terminal 2
 qemu-system-x86_64 -cdrom ubuntu.iso -boot d -hda vm2.img -m 2048
 
-# Boot vm1 once installation completes
+# Boot vm1 once installation completes in Terminal 1
 qemu-system-x86_64 -boot c -hda vm1.img -m 2048
 
-# Boot vm2 once installation completes
+# Boot vm2 once installation completes in Terminal 2
 qemu-system-x86_64 -boot c -hda vm2.img -m 2048
 
 # Enable serial communication in VM1
