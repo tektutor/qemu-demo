@@ -52,7 +52,7 @@ qemu-system-x86_64 -boot c -hda vm1.img -m 2048
 # Boot vm2 once installation completes in Terminal 2
 qemu-system-x86_64 -boot c -hda vm2.img -m 2048
 
-# Enable serial communication in VM1
+# Enable serial communication in VM1 in Terminal 1
 sudo nano /etc/default/grub
 # Modify
 GRUB_CMDLINE_LINUX="console=ttyS0"
@@ -60,7 +60,7 @@ sudo update-grub
 sudo systemctl enable serial-getty@ttyS0.service
 sudo reboot
 
-# Enable serial communication in VM2
+# Enable serial communication in VM2 in Terminal 2
 sudo nano /etc/default/grub
 # Modify
 GRUB_CMDLINE_LINUX="console=ttyS0"
